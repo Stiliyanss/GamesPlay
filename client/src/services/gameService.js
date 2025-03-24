@@ -12,5 +12,8 @@ export default {
     const games = Object.values(result);
 
     return games;
+  },
+  async getOne(gameId){
+    return request.get(`${baseUrl}/${gameId}`)
   }
 };
