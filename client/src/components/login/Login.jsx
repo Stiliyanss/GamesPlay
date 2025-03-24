@@ -13,7 +13,7 @@ export default function Login() {
   
               <label htmlFor="login-pass">Password:</label>
               <input type="password" id="login-password" name="password" />
-              <input type="submit" className="btn submit" value="Login" />
+              <input type="submit" className="btn submit" defaultValue="Login" />
               <p className="field">
                   <span>If you don't have profile click <Link to="/register">here</Link></span>
               </p>

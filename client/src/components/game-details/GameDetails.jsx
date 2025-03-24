@@ -56,7 +56,7 @@ export default function GameDetails() {
 
         {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
         <div className="buttons">
-            <Link to="#" className="button">Edit</Link>
+            <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
             <button onClick={gameDeleteClickHandler} className="button">Delete</button>
         </div>
     </div>
@@ -67,7 +67,7 @@ export default function GameDetails() {
         <label>Add new comment:</label>
         <form className="form">
             <textarea name="comment" placeholder="Comment......"></textarea>
-            <input className="btn submit" type="submit" value="Add Comment" />
+            <input className="btn submit" type="submit" defaultValue="Add Comment" />
         </form>
     </article>
 

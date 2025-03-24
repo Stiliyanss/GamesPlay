@@ -29,7 +29,7 @@ export default function GameCreate() {
   
               <label htmlFor="summary">Summary:</label>
               <textarea name="summary" id="summary"></textarea>
-              <input className="btn submit" type="submit" value="Create Game" />
+              <input className="btn submit" type="submit" defaultValue="Create Game" />
           </div>
       </form>
   </section>

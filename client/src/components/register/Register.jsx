@@ -17,7 +17,7 @@ export default function Register() {
               <label htmlFor="con-pass">Confirm Password:</label>
               <input type="password" name="confirm-password" id="confirm-password" />
   
-              <input className="btn submit" type="submit" value="Register" />
+              <input className="btn submit" type="submit" defaultValue="Register" />
   
               <p className="field">
                   <span>If you already have profile click <Link to="/login">here</Link></span>
