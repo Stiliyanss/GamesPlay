@@ -1,14 +1,17 @@
+import { useActionState } from "react";
 import { Link, useNavigate } from "react-router";
 
 export default function Login({onLogin}) {
     const nav=useNavigate();
 
-    const loginAction = (formData)=>{
-        const email = formData.get('email');
-        onLogin(email);
+    const loginHandler = (previousState, formData)=>{
+        const values = Object.fromEntries(formData);
+        onLogin(values);
         nav('/games');
+        return values;
     }
-
+    const [values,loginAction, isPending]=useActionState(loginHandler,{email:'', password:''});
+    
     return(
       <section id="login-page" className="auth">
       <form id="login" action={loginAction}>
@@ -21,7 +24,7 @@ export default function Login({onLogin}) {
   
               <label htmlFor="login-pass">Password:</label>
               <input type="password" id="login-password" name="password" />
-              <input type="submit" className="btn submit" value="Login" />
+              <input type="submit" className="btn submit" value="Login" disabled={isPending}/>
               <p className="field">
                   <span>If you don't have profile click <Link to="/register">here</Link></span>
               </p>
