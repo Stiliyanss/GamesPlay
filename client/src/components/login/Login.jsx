@@ -1,9 +1,11 @@
-import { useActionState } from "react";
+import { useActionState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { useLogin } from "../../api/authApi";
+import { UserContext } from "../../contexts/userContext";
 
-export default function Login({onLogin}) {
+export default function Login() {
     const nav=useNavigate();
+    const { userLoginHandler } = useContext(UserContext);
     const {login} = useLogin();
 
     const loginHandler =async (_, formData)=>{
@@ -12,7 +14,7 @@ export default function Login({onLogin}) {
 
         const authData = await login(values.email, values.password);
         
-        onLogin(authData);
+        userLoginHandler(authData);
         nav('/games');
         return values;
     }
