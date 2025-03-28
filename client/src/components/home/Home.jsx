@@ -1,4 +1,8 @@
+import {useLatestGames} from '../../api/gameApi'
+
 export default function Home() {
+const { latestGames}= useLatestGames();
+
     return(
         <>
 <section id="welcome-world">
@@ -13,18 +17,21 @@ export default function Home() {
     <h1>Latest Games</h1>
 
     {/* <!-- Display div: with information about every game (if any) --> */}
-    <div className="game">
-        <div className="image-wrap">
-            <img src="/images/CoverFire.png"/>
-        </div>
-        <h3>Cover Fire</h3>
-        <div className="rating">
-            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-        </div>
-        <div className="data-buttons">
-            <a href="#" className="btn details-btn">Details</a>
-        </div>
-    </div>
+    {latestGames.map(game=>(
+ <div className="game">
+ <div className="image-wrap">
+     <img src={game.imageUrl}/>
+ </div>
+ <h3>{game.title}</h3>
+ <div className="rating">
+     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+ </div>
+ <div className="data-buttons">
+     <a href={`/games/${game._id}/details`} className="btn details-btn">Details</a>
+ </div>
+</div>
+    ))}
+   
     <div className="game">
         <div className="image-wrap">
             <img src="/images/ZombieLang.png"/>
@@ -51,7 +58,8 @@ export default function Home() {
     </div>
 
     {/* <!-- Display paragraph: If there is no games  --> */}
-    <p className="no-articles">No games yet</p>
+    {latestGames === 0 &&
+    <p className="no-articles">No games yet</p>}
 </div>
 </section>
 </>
