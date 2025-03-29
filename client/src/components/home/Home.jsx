@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import {useLatestGames} from '../../api/gameApi'
 
 export default function Home() {
@@ -27,7 +28,7 @@ const { latestGames}= useLatestGames();
      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
  </div>
  <div className="data-buttons">
-     <a href={`/games/${game._id}/details`} className="btn details-btn">Details</a>
+     <Link to={`/games/${game._id}/details`} className="btn details-btn">Details</Li>
  </div>
 </div>
     ))}
